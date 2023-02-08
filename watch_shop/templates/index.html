@@ -3,9 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' type='text/css' href="{% static 'css/styles.css' %}" />
+    <script type="text/javascript" src={% static "js/script.js" %}></script>
 </head>
+
 <body>
+
+    {% block content %}
+
+    {% endblock %}
 
 </body>
 </html>
