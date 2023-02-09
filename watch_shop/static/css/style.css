@@ -1,5 +1,46 @@
-body {
+body hr {
   margin: 0;
+  background-color: #d1d1e0;
+  border: none;
+  height: 1px;
+}
+
+.header {
+  width: 100%;
+}
+.header ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.header ul li {
+  padding: 0 5px 0 5px;
+}
+.header .main_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .main_logo_text {
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-family: "Roboto", sans-serif;
+}
+.header .main_logo_text p {
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+}
+.header .main_logo_img {
+  width: 42px;
+  height: 100%;
+  padding-right: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

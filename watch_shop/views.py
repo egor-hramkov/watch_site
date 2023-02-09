@@ -2,4 +2,8 @@ from django.shortcuts import render
 
 
 def mainpage(request):
-    return render(request, 'mainpage.html')
+    data = {
+        "title": "EWatch"
+    }
+    return render(request, 'mainpage.html', context=data)
+
