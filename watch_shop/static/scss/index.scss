@@ -1,4 +1,8 @@
+html{
+  height: 89%;
+}
 body{
+  height: 90%;
   hr {
     margin: 0;
     background-color: #d1d1e0;
@@ -18,10 +22,19 @@ body{
     margin-bottom: 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+    padding: 0;
 
     li{
       padding: 0 5px 0 5px;
     }
+    .search-input{
+        position: absolute;
+        left: 0;
+      }
+      .login-btn{
+        position: absolute;
+        right: 0;
+      }
   }
 
   .main_logo{
@@ -31,7 +44,6 @@ body{
   }
 
   .main_logo_text{
-    //display: flex;
     align-items: center;
     justify-content: center;
     font-size: 48px;
@@ -51,5 +63,26 @@ body{
     padding-right: 5px;
   }
 }
+
+.container{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  .beige-rect{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 65%;
+    height: 80%;
+    background-color: rgb(246, 244, 244);
+    z-index: 0;
+  }
+}
+
+.watch-image{
+  padding-bottom: 15px;
+}
+
 
 
