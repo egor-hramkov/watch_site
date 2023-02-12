@@ -10,22 +10,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
     <header class="header">
         <div class="main_logo">
-            <div class="main_logo_text"><b>EWatch</b><p>Clocks. Rich Flex.</p></div>
+            <div class="main_logo_text"><b>EWatch</b><p>Watches. Rich Flex.</p></div>
         </div>
         <ul>
-            <li class="search-input">Поиск</li>
+            <li class="search-input">
+                <img class="search-img" src="{% static "img/search.svg" %}"/>
+                <input class="search-input-text" placeholder="Поиск">
+            </li>
+            <div style="display: flex;">
             <li>Бренды</li>
             <li>Часы</li>
             <li>Аксессуары</li>
             <li>Ремешки</li>
             <li>Корзина</li>
-            <li class="login-btn">Войти | Регистрация</li>
+            </div>
+            <li class="login-btn">
+                 <img class="account-img" src="{% static "img/user-profile.svg" %}"/>
+            </li>
         </ul>
     </header>
     <hr>
