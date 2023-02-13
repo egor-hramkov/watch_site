@@ -30,6 +30,11 @@ body hr {
 .header ul li {
   padding: 0 5px 0 5px;
 }
+.header ul li a {
+  color: black;
+  outline: none;
+  text-decoration: none;
+}
 .header ul li .search-img {
   width: 30px;
   height: 30px;
@@ -59,6 +64,11 @@ body hr {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.header .main_logo a {
+  color: black;
+  outline: none;
+  text-decoration: none;
 }
 .header .main_logo_text {
   align-items: center;
@@ -125,6 +135,27 @@ body hr {
 
 .watch-image {
   padding-bottom: 15px;
+}
+
+.watches-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.watches-container .watch-card {
+  display: flex;
+  border: 1px solid darkgrey;
+  width: 16.5%;
+  height: auto;
+  flex-direction: column;
+  padding: 20px;
+}
+.watches-container .watch-card-img {
+  height: 300px;
+  width: 100%;
+}
+.watches-container .watch-card-img .watch-img {
+  height: auto;
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */

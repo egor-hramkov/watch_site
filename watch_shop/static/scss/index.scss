@@ -31,6 +31,12 @@ body {
     li {
       padding: 0 5px 0 5px;
 
+      a {
+        color: black;
+        outline: none;
+        text-decoration: none;
+      }
+
       .search-img {
         width: 30px;
         height: 30px;
@@ -67,6 +73,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    a {
+      color: black;
+      outline: none;
+      text-decoration: none;
+    }
   }
 
   .main_logo_text {
@@ -143,6 +155,28 @@ body {
 
 .watch-image {
   padding-bottom: 15px;
+}
+
+.watches-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .watch-card {
+    display: flex;
+    border: 1px solid darkgrey;
+    width: 16.5%;
+    height: auto;
+    flex-direction: column;
+    padding: 20px;
+    &-img{
+      height: 300px;
+      width: 100%;
+      .watch-img{
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
 }
 
 

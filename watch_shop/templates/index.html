@@ -17,7 +17,9 @@
 <body>
     <header class="header">
         <div class="main_logo">
-            <div class="main_logo_text"><b>EWatch</b><p>Watches. Rich Flex.</p></div>
+            <a href="{% url 'mainpage' %}">
+                <div class="main_logo_text"><b>EWatch</b><p>Watches. Rich Flex.</p></div>
+            </a>
         </div>
         <ul>
             <li class="search-input">
@@ -25,11 +27,11 @@
                 <input class="search-input-text" placeholder="Поиск">
             </li>
             <div style="display: flex;">
-            <li>Бренды</li>
-            <li>Часы</li>
-            <li>Аксессуары</li>
-            <li>Ремешки</li>
-            <li>Корзина</li>
+                <li><a href="{% url 'watches' %}">Часы</a></li>
+                <li><a href="#">Бренды</a></li>
+                <li><a href="#">Аксессуары</a></li>
+                <li><a href="#">Ремешки</a></li>
+                <li><a href="#">Корзина</a></li>
             </div>
             <li class="login-btn">
                  <img class="account-img" src="{% static "img/user-profile.svg" %}"/>

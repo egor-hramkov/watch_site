@@ -7,3 +7,6 @@ def mainpage(request):
     }
     return render(request, 'mainpage.html', context=data)
 
+
+def watches_list(request):
+    return render(request, 'watches_list.html')
