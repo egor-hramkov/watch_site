@@ -1,6 +1,9 @@
 html {
   height: 89%;
 }
+*{
+  box-sizing: border-box;
+}
 
 body {
   height: 90%;
@@ -160,22 +163,51 @@ body {
 .watches-container {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+
+  a {
+
+  }
 
   .watch-card {
     display: flex;
     border: 1px solid darkgrey;
-    width: 16.5%;
+    width: 25%;
     height: auto;
     flex-direction: column;
     padding: 20px;
     &-img{
-      height: 300px;
+      height: auto;
       width: 100%;
+      margin-bottom: 20px;
       .watch-img{
         height: auto;
         width: 100%;
       }
     }
+    .watch-card-text {
+      .article {
+        color: grey;
+        margin: 0;
+        font-size: 15px;
+        font-family: 'Roboto', sans-serif;
+      }
+      p {
+        margin: 5px 0 0 0;
+        text-align: center;
+        font-size: 22px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.catalog-block {
+  display: flex;
+
+  .sidebar {
+    display: flex;
+    width: 400px;
   }
 }
 

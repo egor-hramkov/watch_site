@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class Watch(models.Model):
     """Часы"""
+    article = models.CharField(max_length=20, verbose_name="Артикуль", default=None)
     name = models.CharField(max_length=100, verbose_name="Название")
     manufacturer = models.ForeignKey("Manufacturer", on_delete=models.CASCADE, null=True, verbose_name='Производитель')
     material = models.CharField(max_length=250, verbose_name="Материал корпуса")
@@ -16,6 +17,24 @@ class Watch(models.Model):
     gender = models.CharField(max_length=100, verbose_name="Пол")
     diameter = models.IntegerField(null=True, verbose_name="Диаметр")
     thickness = models.IntegerField(null=True, verbose_name="Толщина")
+    watch_img = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to='content/images/',
+        default="photos/default_ico.png",
+        verbose_name='Фотография часов',
+    )
+
+    def __str__(self):
+        return self.manufacturer.name + ' ' + self.name
+
+    class Meta:
+        verbose_name = 'Наручные часы'
+        verbose_name_plural = 'Наручные часы'
+        ordering = ['name', 'manufacturer']
+
+    # def content_file_name(self, filename):
+    #     return '/'.join(['content', self.name, filename])
 
 
 class Basket(models.Model):
@@ -33,7 +52,7 @@ class Orders(models.Model):
     phone = models.CharField(max_length=100, verbose_name="Телефон для связи")
     status = models.CharField(max_length=100, verbose_name='Статус заказа')
     order_time = models.DateTimeField(auto_now_add=True)
-    ready_time = models.DateTimeField(default=datetime.now()+timedelta(days=7))
+    ready_time = models.DateTimeField(default=datetime.now() + timedelta(days=7))
     price = models.IntegerField(null=True, verbose_name="Цена заказа")
 
 
@@ -41,7 +60,13 @@ class Manufacturer(models.Model):
     """Производители"""
     name = models.CharField(max_length=100, verbose_name="Название производителя")
 
+    def __str__(self):
+        return self.name
+
 
 class Belts(models.Model):
     """Типы ремешков"""
     material = models.CharField(max_length=100, verbose_name="Материал ремешка")
+
+    def __str__(self):
+        return self.material

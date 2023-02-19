@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Watch
+
 
 def mainpage(request):
     data = {
@@ -9,4 +11,9 @@ def mainpage(request):
 
 
 def watches_list(request):
-    return render(request, 'watches_list.html')
+    watches = Watch.objects.all()
+    data = {
+        "title": "Каталог часов",
+        "watches": watches,
+    }
+    return render(request, 'watches_list.html', context=data)
