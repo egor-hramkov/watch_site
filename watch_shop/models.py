@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Watch(models.Model):
@@ -27,6 +28,9 @@ class Watch(models.Model):
 
     def __str__(self):
         return self.manufacturer.name + ' ' + self.name
+
+    def get_absolute_url(self):
+        return reverse('get_watch', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Наручные часы'
