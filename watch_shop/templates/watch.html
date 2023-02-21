@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load cut_price %}
+
+{% block content %}
+
+    <div class="watch">
+        <div class="watch-card-img"><img class="watch-img" src="{{ watch.watch_img.url }}"/></div>
+        <div class="watch-text">
+            <p class="watch-brand"><b>{{ watch.manufacturer.name }} {{ watch.name }}</b></p>
+            <p class="watch-price">{{ watch.price|cut_price }}₽</p>
+        </div>
+    </div>
+
+{% endblock %}

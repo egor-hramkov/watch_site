@@ -152,7 +152,14 @@ body hr {
   width: 25%;
   height: auto;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
+}
+.watches-container .watch-card a {
+  text-decoration: none;
+  color: inherit;
+}
+.watches-container .watch-card a:hover {
+  text-decoration: underline;
 }
 .watches-container .watch-card-img {
   height: auto;
@@ -182,6 +189,27 @@ body hr {
 .catalog-block .sidebar {
   display: flex;
   width: 400px;
+}
+
+.watch {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.watch-text {
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+}
+.watch-text .watch-brand {
+  font-size: 44px;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 2px;
+}
+.watch-text .watch-price {
+  font-size: 44px;
+  font-family: "Roboto", sans-serif;
+  align-self: flex-end;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -165,17 +165,22 @@ body {
   flex-wrap: wrap;
   width: 100%;
 
-  a {
-
-  }
-
   .watch-card {
     display: flex;
     border: 1px solid darkgrey;
     width: 25%;
     height: auto;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+
     &-img{
       height: auto;
       width: 100%;
@@ -209,6 +214,29 @@ body {
     display: flex;
     width: 400px;
   }
+}
+
+.watch {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+
+  &-text{
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    .watch-brand {
+      font-size: 44px;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 2px;
+    }
+    .watch-price {
+      font-size: 44px;
+      font-family: 'Roboto', sans-serif;
+      align-self: flex-end;
+    }
+  }
+
 }
 
 

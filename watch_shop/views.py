@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.http import Http404
 from django.shortcuts import render
 
 from .models import Watch
@@ -27,10 +28,14 @@ def watches_list(request):
     return render(request, 'watches_list.html', context=data)
 
 
-def get_watch(request):
-    watch = Watch.objects.get_object_or_404(id=request.pk)
+def get_watch(request, pk):
+    try:
+        watch = Watch.objects.get(id=pk)
+    except Watch.DoesNotExist:
+        raise Http404()
+
     data = {
-        "title": "Часы" + watch.manufacturer.name + watch.name,
+        "title": watch.manufacturer.name + ' ' + watch.name,
         "watch": watch,
     }
-    return render(request, 'watches_list.html', context=data)
+    return render(request, 'watch.html', context=data)

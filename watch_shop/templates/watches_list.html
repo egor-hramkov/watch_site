@@ -10,16 +10,16 @@
         </div>
         <div class="watches-container">
             {% for watch in watches %}
-                <a href="{{ watch.get_absolute_url }}">
-                    <div class="watch-card">
-                        <div class="watch-card-img"><img class="watch-img" src="{% static 'img/watch1.jpg' %}"/></div>
+                <div class="watch-card">
+                    <a href="{{ watch.get_absolute_url }}">
+                        <div class="watch-card-img"><img class="watch-img" src="{{ watch.watch_img.url }}"/></div>
                         <div class="watch-card-text">
                             <p class="article">{{ watch.article }}</p>
                             <p class="watch-brand">{{ watch.manufacturer.name }} {{ watch.name }}</p>
                             <p class="watch-price">{{ watch.price|cut_price }}₽</p>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     </div>

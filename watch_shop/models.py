@@ -1,8 +1,11 @@
+import os
 from datetime import datetime, timedelta
 
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+
+from watch_site.settings import BASE_DIR
 
 
 class Watch(models.Model):
@@ -21,7 +24,7 @@ class Watch(models.Model):
     watch_img = models.ImageField(
         null=True,
         blank=True,
-        upload_to='content/images/',
+        upload_to=os.path.join(BASE_DIR, '../media/content/images/'),
         default="photos/default_ico.png",
         verbose_name='Фотография часов',
     )
