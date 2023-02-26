@@ -205,11 +205,36 @@ body hr {
   font-size: 44px;
   font-family: "Roboto", sans-serif;
   letter-spacing: 2px;
+  margin: 20px 0 0 0;
 }
 .watch-text .watch-price {
   font-size: 44px;
   font-family: "Roboto", sans-serif;
   align-self: flex-end;
+  margin: 10px 0 0 0;
+}
+.watch-text-2nd {
+  font-size: 40px;
+  font-family: "Roboto", sans-serif;
+  align-self: flex-end;
+  margin: 10px 0 0 0;
+  color: grey;
+}
+.watch-img {
+  height: 420px;
+  width: auto;
+}
+
+.beige-circ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 80%;
+  background-color: rgb(246, 244, 244);
+  align-self: center;
+  margin: 2% auto;
+  border-radius: 7%;
 }
 
 /*# sourceMappingURL=style.css.map */

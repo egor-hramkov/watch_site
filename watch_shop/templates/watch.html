@@ -3,12 +3,20 @@
 {% load cut_price %}
 
 {% block content %}
-
-    <div class="watch">
-        <div class="watch-card-img"><img class="watch-img" src="{{ watch.watch_img.url }}"/></div>
-        <div class="watch-text">
-            <p class="watch-brand"><b>{{ watch.manufacturer.name }} {{ watch.name }}</b></p>
-            <p class="watch-price">{{ watch.price|cut_price }}₽</p>
+    <div class="beige-circ">
+        <div class="watch">
+            <div class="watch-card-img"><img class="watch-img" src="{{ watch.watch_img.url }}"/></div>
+            <div class="watch-text">
+                <p class="watch-brand"><b>{{ watch.manufacturer.name }} {{ watch.name }}</b></p>
+                <p class="watch-price">{{ watch.price|cut_price }}₽</p>
+                <p class="watch-text-2nd">{{ watch.gender }}</p>
+                <p class="watch-text-2nd">Материал корпуса: {{ watch.material }}</p>
+                <p class="watch-text-2nd">Материал ремешка: {{ watch.belt_type }}</p>
+                <p class="watch-text-2nd">Диаметр: {{ watch.diameter }} мм.</p>
+                <p class="watch-text-2nd">Толщина: {{ watch.thickness }} мм.</p>
+                {% if watch.is_water_resist %}<p class="watch-text-2nd">Водонепроницаемые </p>{% endif %}
+                <p class="watch-text-2nd">Гарантия: {{ watch.warranty }} года</p>
+            </div>
         </div>
     </div>
 
