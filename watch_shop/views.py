@@ -1,7 +1,11 @@
+from django.contrib.auth import logout, authenticate
+from django.contrib.auth.views import LoginView
 from django.core.paginator import Paginator
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 
+from forms import RegisterUserForm, LoginUserForm
 from .models import Watch
 
 
@@ -14,7 +18,7 @@ def mainpage(request):
 
 def watches_list(request):
     watches = Watch.objects.all()
-    paginator = Paginator(watches, 12)
+    paginator = Paginator(watches, 8)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -39,3 +43,38 @@ def get_watch(request, pk):
         "watch": watch,
     }
     return render(request, 'watch.html', context=data)
+
+
+def register(request):
+    form = RegisterUserForm()
+    error = ""
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            error = "Пожалуйста введите все поля верно"
+
+    context = {
+        'form': form,
+        'title': 'Регистрация',
+    }
+    return render(request, 'registration.html', context=context)
+
+
+def auth(request):
+    form = LoginUserForm
+    if request.method == 'POST':
+        form = LoginUserForm(request.POST)
+        if form.is_valid():
+            user = authenticate(username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password'))
+    context = {
+        'form': form,
+        'title': 'Вход',
+    }
+    return render(request, 'auth.html', context=context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
