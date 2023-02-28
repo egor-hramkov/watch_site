@@ -34,7 +34,13 @@
                 <li><a href="#">Корзина</a></li>
             </div>
             <li class="login-btn">
-                 <img class="account-img" src="{% static "img/user-profile.svg" %}" onclick="location.href={% url 'registration' %}"/>
+                 <img class="account-img" src="{% static "img/user-profile.svg" %}"
+                      {% if request.user.is_authenticated %}
+                         onclick="location.href={% url 'profile' %}"
+                      {% else %}
+                        onclick="location.href={% url 'registration' %}"
+                      {% endif %}
+                 />
             </li>
         </ul>
     </header>

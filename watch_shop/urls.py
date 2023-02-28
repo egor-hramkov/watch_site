@@ -1,6 +1,6 @@
 from django.urls import path
 
-from watch_shop.views import mainpage, watches_list, get_watch, register, auth
+from watch_shop.views import mainpage, watches_list, get_watch, register, auth,  profile
 
 urlpatterns = [
     path('', mainpage, name='mainpage'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('watches/<int:pk>', get_watch, name='get_watch'),
     path('registration/', register, name='registration'),
     path('auth/', auth, name='auth'),
+    path('profile/', profile, name='profile'),
 ]

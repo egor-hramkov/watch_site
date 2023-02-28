@@ -1,4 +1,6 @@
-from django.contrib.auth import logout, authenticate
+from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -32,6 +34,7 @@ def watches_list(request):
     return render(request, 'watches_list.html', context=data)
 
 
+@login_required
 def get_watch(request, pk):
     try:
         watch = Watch.objects.get(id=pk)
@@ -52,8 +55,12 @@ def register(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
-        else:
-            error = "Пожалуйста введите все поля верно"
+            new_user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password1'],
+            )
+            login(request, new_user)
+            return redirect('mainpage')
 
     context = {
         'form': form,
@@ -65,9 +72,11 @@ def register(request):
 def auth(request):
     form = LoginUserForm
     if request.method == 'POST':
-        form = LoginUserForm(request.POST)
+        form = LoginUserForm(data=request.POST)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password'))
+            login(request, user)
+            return redirect('mainpage')
     context = {
         'form': form,
         'title': 'Вход',
@@ -78,3 +87,12 @@ def auth(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+def profile(request):
+    user = User.objects.get(username=request.user)
+    context = {
+        'user': user,
+        'title': 'Ваш профиль',
+    }
+    return render(request, 'profile.html', context=context)
