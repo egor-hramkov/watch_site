@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load cut_price %}
+
+{% block content %}
+
+    {% if not orders %}
+        <p>Вы еще не сделали ни одного заказа</p>
+    {% else %}
+
+
+        <div class="order-container">
+            {% for order in orders %}
+                <div class="order-card">
+
+
+                    <div class="watch-card-img"><img class="watch-img" src="{{ order.order.watch_img.url }}"/></div>
+                        <div class="watch-card-text">
+                            <p class="article">{{ order.order.article }}</p>
+                            <a href="{{ order.order.get_absolute_url }}">
+                                <p class="watch-brand">{{ order.order.manufacturer.name }} {{ watch.name }}</p>
+                            </a>
+                            <p class="watch-price">{{ order.price|cut_price }}₽</p>
+                        </div>
+                    </div>
+
+                <p>{{ order.address }}</p>
+                <p>{{ order.phone }}</p>
+                <p>{{ order.status }}</p>
+                <p>{{ order.order_time }}</p>
+                <p>{{ order.ready_time }}</p>
+                <p>{{ order.price|cut_price }}₽</p>
+
+            {% endfor %}
+        </div>
+
+    {% endif %}
+
+{% endblock %}

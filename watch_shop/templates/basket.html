@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load cut_price %}
+
+{% block content %}
+
+    {% if not basket %}
+        <p>Ваша корзина пуста</p>
+    {% else %}
+
+        <div class="basket-container">
+            {% for b in basket %}
+                <div class="basket-card">
+                    <a href="{{ b.product.get_absolute_url }}">
+                        <div class="watch-card-img"><img class="watch-img" src="{{ b.product.watch_img.url }}"/></div>
+                        <div class="watch-card-text">
+                            <p class="article">{{ b.product.article }}</p>
+                            <p class="watch-brand">{{ b.product.manufacturer.name }} {{ b.product.name }}</p>
+                            <p class="watch-price">{{ b.product.price|cut_price }}₽</p>
+                        </div>
+                    </a>
+                <button onclick="location.href ='{% url 'order_register' %}?product_id={{ b.product.id }}'">Оформить заказ на этот товар</button>
+                </div>
+            {% endfor %}
+        </div>
+        <p>{{ total_price|cut_price }}₽</p>
+        <button onclick="location.href ='{% url 'order_register' %}?all=True'">Оформить заказ на все товары в корзине</button>
+
+    {% endif %}
+
+{% endblock %}

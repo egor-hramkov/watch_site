@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
+from watch_shop.models import Orders
+
 
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder': "Логин"}))
@@ -48,3 +50,9 @@ class LoginUserForm(AuthenticationForm):
 class SearchProduct(forms.Form):
     searchBy = forms.CharField(max_length=150, label="", help_text="",
                                widget=forms.TextInput(attrs={'placeholder': 'Search'}))
+
+
+class RegisterOrder(forms.ModelForm):
+    class Meta:
+        model = Orders
+        fields = ['address', 'phone']

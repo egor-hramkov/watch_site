@@ -58,7 +58,7 @@ class Orders(models.Model):
     order = models.ForeignKey("Watch", verbose_name="Заказ", on_delete=models.CASCADE)
     address = models.CharField(max_length=255, verbose_name="Адрес")
     phone = models.CharField(max_length=100, verbose_name="Телефон для связи")
-    status = models.CharField(max_length=100, verbose_name='Статус заказа')
+    status = models.CharField(max_length=100, verbose_name='Статус заказа', default='В обработке')
     order_time = models.DateTimeField(auto_now_add=True)
     ready_time = models.DateTimeField(default=datetime.now() + timedelta(days=7))
     price = models.IntegerField(null=True, verbose_name="Цена заказа")

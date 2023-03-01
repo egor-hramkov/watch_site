@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load cut_price %}
+
+{% block content %}
+
+    <div class="goods-for-orders">
+        {% for obj in objects %}
+            <div class="basket-card">
+                <a href="{{ obj.product.get_absolute_url }}">
+                    <div class="watch-card-img"><img class="watch-img" src="{{ obj.product.watch_img.url }}"/></div>
+                    <div class="watch-card-text">
+                        <p class="article">{{ obj.product.article }}</p>
+                        <p class="watch-brand">{{ obj.product.manufacturer.name }} {{ b.product.name }}</p>
+                        <p class="watch-price">{{ obj.product.price|cut_price }}₽</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    <p>{{ total_price }}</p>
+    </div>
+
+    <div class="box">
+        <form method="post">
+            {% csrf_token %}
+            <div class="forErrors">{{ form.non_field_errors }}</div>
+            {% for f in form %}
+                <p><label for="{{ f.id_for_label }}">{{ f.label }} </label>{{ f }}</p>
+                <div>{{ f.errors }}</div>
+            {% endfor %}
+            <button class="register-btn" type="submit">Оформить заказ</button>
+            <a href="{% url 'basket' %}">Отмена</a>
+        </form>
+    </div>
+
+{% endblock %}
