@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from watch_shop.models import Orders
+from watch_shop.models import Orders, Manufacturer, Belts
 
 
 class RegisterUserForm(UserCreationForm):
@@ -61,15 +61,14 @@ class RegisterOrder(forms.ModelForm):
 class FilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['manufacturer'].empty_label = "Производитель"
-        self.fields['belt_type'].empty_label = "Материал ремешка"
-        self.fields['gender'].empty_label = "Пол"
-        self.fields['price_start'].placeholder = "От"
-        self.fields['price_end'].placeholder = "До"
+        self.fields['price_start'].label = ""
+        self.fields['price_end'].label = ""
+        self.fields['manufacturer'].label = "Производитель"
+        self.fields['belt_type'].label = "Материал ремешка"
+        self.fields['gender'].label = "Пол"
 
-    price_start = forms.CharField(max_length=10)
-    price_end = forms.CharField(max_length=10)
-    manufacturer = forms.Select()
-    belt_type = forms.Select()
-    gender = forms.Select()
-    is_water_resist = forms.CheckboxInput()
+    price_start = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': "От"}))
+    price_end = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': "До"}))
+    manufacturer = forms.ChoiceField(choices=[('0', 'Любой')] + [(choice.pk, choice.name) for choice in Manufacturer.objects.all()], required=False)
+    belt_type = forms.ChoiceField(choices=[('0', 'Любой')] + [(choice.pk, choice.material) for choice in Belts.objects.all()], required=False)
+    gender = forms.ChoiceField(choices=[('0', 'Любой')] + [('1', "Мужские"), ('2', "Женские"), ('3', "Унисекс")], required=False)

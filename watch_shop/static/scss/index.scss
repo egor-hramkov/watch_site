@@ -344,4 +344,60 @@ body {
 }
 
 
+.filter-box {
+	width: 100%;
+	padding: 40px;
+	background: white;
+	text-align: center;
+	border-radius: 24px;
+    //box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+.filter-box h1 {
+	color: white;
+	text-transform: uppercase;
+	font-weight: 500;
+	margin-top: 0;
+	margin-bottom: 40px;
+}
+
+.filter-box input[type = "submit"]:hover {
+	background: #2ecc71;
+}
+.filter-box a {
+  display: block;
+  margin: 20px auto;
+  background: none;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+  width: 40%;
+}
+
+.filter-box input[type = "text"],
+.filter-box input[type = "password"],
+  .filter-box input[type = "email"],
+   .filter-box input[type = "number"] {
+	display: block;
+	margin: 20px auto;
+	border: 0;
+	background: none;
+	text-align: center;
+	border: 2px solid #3498db;
+	padding: 14px 10px;
+	outline: none;
+	color: black;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+	font-weight: 700;
+}
+.filter-box input[type = "text"]:focus,
+ .filter-box input[type = "password"]:focus,
+  .filter-box input[type = "email"]:focus,
+   .filter-box input[type = "number"]:focus {
+	border-color: #2ecc71;
+}
+
+
 

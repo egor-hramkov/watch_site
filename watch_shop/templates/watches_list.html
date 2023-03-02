@@ -7,7 +7,7 @@
     <div class="catalog-block">
 
         <div class="sidebar">
-            <div class="box">
+            <div class="filter-box">
                 <form method="post">
                     {% csrf_token %}
                     <div class="forErrors">{{ filter_form.non_field_errors }}</div>
@@ -15,6 +15,9 @@
                         <p><label for="{{ f.id_for_label }}">{{ f.label }} </label>{{ f }}</p>
                         <div>{{ f.errors }}</div>
                     {% endfor %}
+
+                    <label for="is_water_resist">Водонепроницаемые </label><input type="checkbox" name="is_water_resist" id="is_water_resist"/>
+
                     <button class="register-btn" type="submit">Применить</button>
                     <a href="#">Сбросить фильтры</a>
                 </form>

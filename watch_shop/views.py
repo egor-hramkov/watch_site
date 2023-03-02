@@ -3,12 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.core.paginator import Paginator
-from django.http import Http404, HttpResponseNotFound
+from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from forms import RegisterUserForm, LoginUserForm, RegisterOrder, FilterForm
-from .models import Watch, Basket, Orders
+from watch_shop.models import Watch, Basket, Orders
 
 
 def mainpage(request):
@@ -29,17 +29,18 @@ def watches_list(request):
             price_end = filter_form.cleaned_data.get('price_end') if filter_form.cleaned_data.get('price_end') else 99999999
             watches = watches.filter(price__gte=price_start, price__lte=price_end)
 
-            if filter_form.cleaned_data.get('is_water_resist'):
+            if request.POST.get('is_water_resist'):
                 watches = watches.filter(is_water_resist=True)
 
-            if filter_form.cleaned_data.get('manufacturer'):
-                watches = watches.filter(manufacturer__name=filter_form.cleaned_data.get('manufacturer'))
+            if filter_form.cleaned_data.get('manufacturer') != "0":
+                watches = watches.filter(manufacturer=filter_form.cleaned_data.get('manufacturer'))
 
-            if filter_form.cleaned_data.get('belt_type'):
-                watches = watches.filter(manufacturer__name=filter_form.cleaned_data.get('belt_type'))
+            if filter_form.cleaned_data.get('belt_type') != "0":
+                watches = watches.filter(manufacturer=filter_form.cleaned_data.get('belt_type'))
 
-            if filter_form.cleaned_data.get('gender'):
-                watches = watches.filter(gender=filter_form.cleaned_data.get('gender'))
+            if filter_form.cleaned_data.get('gender') != "0":
+                genders = ['Мужские', 'Женские', 'Унисекс']
+                watches = watches.filter(gender=genders[int(filter_form.cleaned_data.get('gender'))-1])
 
     paginator = Paginator(watches, 8)
     page_number = request.GET.get('page')
@@ -105,10 +106,9 @@ def auth(request):
     return render(request, 'auth.html', context=context)
 
 
-@login_required()
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    return redirect('auth')
 
 
 @login_required()
