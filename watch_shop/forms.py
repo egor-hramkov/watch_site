@@ -56,3 +56,20 @@ class RegisterOrder(forms.ModelForm):
     class Meta:
         model = Orders
         fields = ['address', 'phone']
+
+
+class FilterForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['manufacturer'].empty_label = "Производитель"
+        self.fields['belt_type'].empty_label = "Материал ремешка"
+        self.fields['gender'].empty_label = "Пол"
+        self.fields['price_start'].placeholder = "От"
+        self.fields['price_end'].placeholder = "До"
+
+    price_start = forms.CharField(max_length=10)
+    price_end = forms.CharField(max_length=10)
+    manufacturer = forms.Select()
+    belt_type = forms.Select()
+    gender = forms.Select()
+    is_water_resist = forms.CheckboxInput()

@@ -3,11 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.core.paginator import Paginator
-from django.http import Http404
+from django.http import Http404, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from forms import RegisterUserForm, LoginUserForm, RegisterOrder
+from forms import RegisterUserForm, LoginUserForm, RegisterOrder, FilterForm
 from .models import Watch, Basket, Orders
 
 
@@ -20,12 +20,33 @@ def mainpage(request):
 
 def watches_list(request):
     watches = Watch.objects.all()
-    paginator = Paginator(watches, 8)
+    filter_form = FilterForm
 
+    if request.method == 'POST':
+        filter_form = FilterForm(request.POST)
+        if filter_form.is_valid():
+            price_start = filter_form.cleaned_data.get('price_start') if filter_form.cleaned_data.get('price_start') else 0
+            price_end = filter_form.cleaned_data.get('price_end') if filter_form.cleaned_data.get('price_end') else 99999999
+            watches = watches.filter(price__gte=price_start, price__lte=price_end)
+
+            if filter_form.cleaned_data.get('is_water_resist'):
+                watches = watches.filter(is_water_resist=True)
+
+            if filter_form.cleaned_data.get('manufacturer'):
+                watches = watches.filter(manufacturer__name=filter_form.cleaned_data.get('manufacturer'))
+
+            if filter_form.cleaned_data.get('belt_type'):
+                watches = watches.filter(manufacturer__name=filter_form.cleaned_data.get('belt_type'))
+
+            if filter_form.cleaned_data.get('gender'):
+                watches = watches.filter(gender=filter_form.cleaned_data.get('gender'))
+
+    paginator = Paginator(watches, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     data = {
+        'filter_form': filter_form,
         'page_obj': page_obj,
         'paginator': paginator,
         "title": "Каталог часов",
@@ -177,3 +198,10 @@ def order_register(request):
         'total_price': total_price,
     }
     return render(request, 'register_order.html', context=context)
+
+
+def pageNotFound(request, exception):
+    context = {
+        'title': 'Страница не найдена',
+    }
+    return HttpResponseNotFound(render(request, '404.html', context=context))

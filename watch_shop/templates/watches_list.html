@@ -5,9 +5,22 @@
 {% block content %}
 
     <div class="catalog-block">
+
         <div class="sidebar">
-            Тут фильтры
+            <div class="box">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="forErrors">{{ filter_form.non_field_errors }}</div>
+                    {% for f in filter_form %}
+                        <p><label for="{{ f.id_for_label }}">{{ f.label }} </label>{{ f }}</p>
+                        <div>{{ f.errors }}</div>
+                    {% endfor %}
+                    <button class="register-btn" type="submit">Применить</button>
+                    <a href="#">Сбросить фильтры</a>
+                </form>
+            </div>
         </div>
+
         <div class="watches-container">
             {% for watch in watches %}
                 <div class="watch-card">
@@ -22,6 +35,7 @@
                 </div>
             {% endfor %}
         </div>
+
     </div>
 
     {% if page_obj.has_other_pages %}
