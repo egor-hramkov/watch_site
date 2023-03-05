@@ -301,14 +301,15 @@ body {
   font-family: 'Montserrat', sans-serif;
   height: 45px;
   cursor: pointer;
-  margin: 0 auto;
+  margin: 10px auto;
+  margin-bottom: 0;
 }
 .box input[type = "submit"]:hover {
 	background: #2ecc71;
 }
 .box a {
   display: block;
-  margin: 20px auto;
+  margin: 10px auto;
   background: none;
   text-align: center;
   text-decoration: none;
@@ -365,13 +366,14 @@ body {
 }
 .filter-box a {
   display: block;
-  margin: 20px auto;
+  margin: 10px auto;
   background: none;
   text-align: center;
   text-decoration: none;
   color: black;
   font-size: 24px;
-  width: 40%;
+  width: 60%;
+  border: black solid 2px
 }
 
 .filter-box input[type = "text"],
@@ -397,6 +399,40 @@ body {
   .filter-box input[type = "email"]:focus,
    .filter-box input[type = "number"]:focus {
 	border-color: #2ecc71;
+}
+
+.filter-box p {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.filter-box select {
+  margin-bottom: 1em;
+  padding: .25em;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: .15em;
+  border-radius: 0;
+  font-family: 'Roboto', sans-serif;
+  &:focus, &:active {
+    outline: 0;
+    border-bottom-color: black;
+  }
+}
+
+.filter-box .checkbox-filter {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.user-info {
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+  a {
+    text-decoration: none;
+    outline: none;
+  }
 }
 
 

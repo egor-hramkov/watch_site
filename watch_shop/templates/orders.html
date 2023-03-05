@@ -20,16 +20,16 @@
                             <a href="{{ order.order.get_absolute_url }}">
                                 <p class="watch-brand">{{ order.order.manufacturer.name }} {{ watch.name }}</p>
                             </a>
-                            <p class="watch-price">{{ order.price|cut_price }}₽</p>
+                            <p class="watch-price">{{ order.order.price|cut_price }}₽</p>
                         </div>
                     </div>
 
-                <p>{{ order.address }}</p>
-                <p>{{ order.phone }}</p>
-                <p>{{ order.status }}</p>
-                <p>{{ order.order_time }}</p>
-                <p>{{ order.ready_time }}</p>
-                <p>{{ order.price|cut_price }}₽</p>
+                <p>{{ order.order.address }}</p>
+                <p>{{ order.order.phone }}</p>
+                <p>{{ order.order.status }}</p>
+                <p>{{ order.order.order_time }}</p>
+                <p>{{ order.order.ready_time }}</p>
+                <p>{{ order.order.price|cut_price }}₽</p>
 
             {% endfor %}
         </div>

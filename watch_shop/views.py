@@ -137,8 +137,8 @@ def basket(request):
 
 @login_required()
 def add_to_basket(request):
-    product_id = request.query_params.get('product_id')
-    Basket.objects.create(user=request.user.id, product=Watch.objects.get(id=product_id), amount=1)
+    product_id = request.GET.get('product_id')
+    Basket.objects.create(user=request.user, product=Watch.objects.get(id=product_id), amount=1)
     return redirect('get_watch', pk=product_id)
 
 
@@ -177,15 +177,27 @@ def order_register(request):
     if request.method == 'POST':
         form = RegisterOrder(request.POST)
         if form.is_valid():
-            fields = form.save(commit=False)
-            fields.user = User.objects.get(id=request.user.id)
-            fields.save()
-            return redirect('orders')
+            if request.GET.get('product_id'):
+                product = request.GET.get('product_id')
+                fields = form.save(commit=False)
+                fields.user = User.objects.get(id=request.user.id)
+                fields.order = Watch.objects.get(id=product)
+                fields.price = Watch.objects.get(id=product).price
+                fields.save()
+            else:
+                all_products = Basket.objects.filter(user=request.user.id)
+                for product in all_products:
+                    fields = form.save(commit=False)
+                    fields.user = User.objects.get(id=request.user.id)
+                    fields.order = Watch.objects.get(id=product)
+                    fields.save()
 
-    if request.query_params.get('all'):
-        objects = Basket.objects.filter(user=request.user.id)
+        return redirect('orders')
+
+    if request.GET.get('all'):
+        objects = Basket.objects.filter(user=request.user)
     else:
-        objects = Basket.objects.filter(product=request.query_params.get('product_id'))
+        objects = Basket.objects.filter(product=request.GET.get('product_id'))
 
     total_price = 0
     for obj in objects:

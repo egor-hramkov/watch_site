@@ -12,22 +12,27 @@
                     {% csrf_token %}
                     <div class="forErrors">{{ filter_form.non_field_errors }}</div>
                     {% for f in filter_form %}
-                        <p><label for="{{ f.id_for_label }}">{{ f.label }} </label>{{ f }}</p>
+                        <p><label for="{{ f.id_for_label }}">{{ f.label }} </label>{% if f.field.widget.input_type != "text" %}<br>{% endif %}{{ f }}</p>
                         <div>{{ f.errors }}</div>
                     {% endfor %}
 
-                    <label for="is_water_resist">Водонепроницаемые </label><input type="checkbox" name="is_water_resist" id="is_water_resist"/>
+                    <label for="is_water_resist" class="checkbox-filter">Водонепроницаемые
+                        <input type="checkbox" name="is_water_resist" id="is_water_resist"/>
+                    </label>
 
                     <button class="register-btn" type="submit">Применить</button>
-                    <a href="#">Сбросить фильтры</a>
+                    <a href="{% url 'watches' %}">Сбросить фильтры</a>
                 </form>
             </div>
         </div>
 
         <div class="watches-container">
+        {% if not watches %}
+            <p style="font-size: 40px; font-family: 'Roboto', sans-serif;">По вашему запросу не нашлось результатов :(</p>
+        {% endif %}
             {% for watch in watches %}
                 <div class="watch-card">
-                    <a href="{{ watch.get_absolute_url }}">
+                    <a href="{% if not request.user.is_authenticated %} {% url 'auth' %}  {% else %} {{ watch.get_absolute_url }} {% endif %}">
                         <div class="watch-card-img"><img class="watch-img" src="{{ watch.watch_img.url }}"/></div>
                         <div class="watch-card-text">
                             <p class="article">{{ watch.article }}</p>

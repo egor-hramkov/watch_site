@@ -24,7 +24,7 @@ class Watch(models.Model):
     watch_img = models.ImageField(
         null=True,
         blank=True,
-        #upload_to=os.path.join(BASE_DIR, '../media/content/images/'),
+        # upload_to=os.path.join(BASE_DIR, '../media/content/images/'),
         upload_to='media/',
         default="photos/default_ico.png",
         verbose_name='Фотография часов',
@@ -62,6 +62,9 @@ class Orders(models.Model):
     order_time = models.DateTimeField(auto_now_add=True)
     ready_time = models.DateTimeField(default=datetime.now() + timedelta(days=7))
     price = models.IntegerField(null=True, verbose_name="Цена заказа")
+
+    def __str__(self):
+        return self.user.username + ' ' + self.address + 'Телефон: ' + self.phone
 
 
 class Manufacturer(models.Model):

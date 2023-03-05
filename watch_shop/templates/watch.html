@@ -19,6 +19,6 @@
             </div>
         </div>
     </div>
-    <div style="display: flex;margin: 0 auto;"><button class="shopnow2" onclick="location.href ={% url 'add_to_basket' %}?product_id={{ watch.id }}">Приобрести</button></div>
+    <div style="display: flex;margin: 0 auto;"><button class="shopnow2" onclick="location.href = '{% url 'add_to_basket' %}?product_id={{ watch.id }}'">Приобрести</button></div>
 
 {% endblock %}
