@@ -53,9 +53,15 @@ class SearchProduct(forms.Form):
 
 
 class RegisterOrder(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     class Meta:
         model = Orders
         fields = ['address', 'phone']
+        widgets = {
+            'phone': forms.TextInput(attrs={'type': "number"})
+        }
 
 
 class FilterForm(forms.Form):
@@ -67,8 +73,8 @@ class FilterForm(forms.Form):
         self.fields['belt_type'].label = "Материал ремешка"
         self.fields['gender'].label = "Пол"
 
-    price_start = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': "От"}))
-    price_end = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': "До"}))
+    price_start = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': "От", 'type': "number"}))
+    price_end = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': "До", 'type': "number"}))
     manufacturer = forms.ChoiceField(choices=[('0', 'Любой')] + [(choice.pk, choice.name) for choice in Manufacturer.objects.all()], required=False)
     belt_type = forms.ChoiceField(choices=[('0', 'Любой')] + [(choice.pk, choice.material) for choice in Belts.objects.all()], required=False)
     gender = forms.ChoiceField(choices=[('0', 'Любой')] + [('1', "Мужские"), ('2', "Женские"), ('3', "Унисекс")], required=False)

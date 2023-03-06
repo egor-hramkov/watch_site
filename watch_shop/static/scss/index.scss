@@ -1,7 +1,8 @@
 html {
   height: 89%;
 }
-*{
+
+* {
   box-sizing: border-box;
 }
 
@@ -187,20 +188,23 @@ body {
     a {
       text-decoration: none;
       color: inherit;
-      &:hover{
+
+      &:hover {
         text-decoration: underline;
       }
     }
 
-    &-img{
+    &-img {
       height: auto;
       width: 100%;
       margin-bottom: 20px;
-      .watch-img{
+
+      .watch-img {
         height: auto;
         width: 100%;
       }
     }
+
     .watch-card-text {
       .article {
         color: grey;
@@ -208,6 +212,7 @@ body {
         font-size: 15px;
         font-family: 'Roboto', sans-serif;
       }
+
       p {
         margin: 5px 0 0 0;
         text-align: center;
@@ -232,22 +237,25 @@ body {
   width: 100%;
   justify-content: space-evenly;
 
-  &-text{
+  &-text {
     font-size: 22px;
     display: flex;
     flex-direction: column;
+
     .watch-brand {
       font-size: 44px;
       font-family: 'Roboto', sans-serif;
       letter-spacing: 2px;
       margin: 20px 0 0 0;
     }
+
     .watch-price {
       font-size: 44px;
       font-family: 'Roboto', sans-serif;
       align-self: flex-end;
       margin: 10px 0 0 0;
     }
+
     &-2nd {
       font-size: 40px;
       font-family: 'Roboto', sans-serif;
@@ -256,43 +264,46 @@ body {
       color: grey;
     }
   }
-  &-img{
+
+  &-img {
     height: 420px;
     width: auto;
   }
 }
 
 .beige-circ {
-        display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    height: 80%;
-    background-color: rgb(246, 244, 244);
-    align-self: center;
-    margin: 2% auto;
-    border-radius: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 80%;
+  background-color: rgb(246, 244, 244);
+  align-self: center;
+  margin: 2% auto;
+  border-radius: 7%;
 }
 
 .box {
-	width: 500px;
-	padding: 40px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background: white;
-	text-align: center;
-	border-radius: 24px;
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+  width: 500px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  text-align: center;
+  border-radius: 24px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
 }
+
 .box h1 {
-	color: white;
-	text-transform: uppercase;
-	font-weight: 500;
-	margin-top: 0;
-	margin-bottom: 40px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 40px;
 }
+
 .register-btn {
   border: black solid 2px;
   width: 60%;
@@ -304,9 +315,11 @@ body {
   margin: 10px auto;
   margin-bottom: 0;
 }
+
 .box input[type = "submit"]:hover {
-	background: #2ecc71;
+  background: #2ecc71;
 }
+
 .box a {
   display: block;
   margin: 10px auto;
@@ -320,50 +333,53 @@ body {
 
 .box input[type = "text"],
 .box input[type = "password"],
-  .box input[type = "email"],
-   .box input[type = "number"] {
-	display: block;
-	margin: 20px auto;
-	border: 0;
-	background: none;
-	text-align: center;
-	border: 2px solid #3498db;
-	padding: 14px 10px;
-	outline: none;
-	color: black;
-	border-radius: 24px;
-	transition: 0.25s;
-	cursor: pointer;
-	font-weight: 700;
+.box input[type = "email"],
+.box input[type = "number"] {
+  display: block;
+  margin: 20px auto;
+  border: 0;
+  background: none;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  font-weight: 700;
 }
+
 .box input[type = "text"]:focus,
- .box input[type = "password"]:focus,
-  .box input[type = "email"]:focus,
-   .box input[type = "number"]:focus {
-	padding: 14px 60px;
-	border-color: #2ecc71;
+.box input[type = "password"]:focus,
+.box input[type = "email"]:focus,
+.box input[type = "number"]:focus {
+  padding: 14px 60px;
+  border-color: #2ecc71;
 }
 
 
 .filter-box {
-	width: 100%;
-	padding: 40px;
-	background: white;
-	text-align: center;
-	border-radius: 24px;
-    //box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 40px;
+  background: white;
+  text-align: center;
+  border-radius: 24px;
+  //box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
 }
+
 .filter-box h1 {
-	color: white;
-	text-transform: uppercase;
-	font-weight: 500;
-	margin-top: 0;
-	margin-bottom: 40px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 40px;
 }
 
 .filter-box input[type = "submit"]:hover {
-	background: #2ecc71;
+  background: #2ecc71;
 }
+
 .filter-box a {
   display: block;
   margin: 10px auto;
@@ -378,27 +394,28 @@ body {
 
 .filter-box input[type = "text"],
 .filter-box input[type = "password"],
-  .filter-box input[type = "email"],
-   .filter-box input[type = "number"] {
-	display: block;
-	margin: 20px auto;
-	border: 0;
-	background: none;
-	text-align: center;
-	border: 2px solid #3498db;
-	padding: 14px 10px;
-	outline: none;
-	color: black;
-	border-radius: 24px;
-	transition: 0.25s;
-	cursor: pointer;
-	font-weight: 700;
+.filter-box input[type = "email"],
+.filter-box input[type = "number"] {
+  display: block;
+  margin: 20px auto;
+  border: 0;
+  background: none;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  font-weight: 700;
 }
+
 .filter-box input[type = "text"]:focus,
- .filter-box input[type = "password"]:focus,
-  .filter-box input[type = "email"]:focus,
-   .filter-box input[type = "number"]:focus {
-	border-color: #2ecc71;
+.filter-box input[type = "password"]:focus,
+.filter-box input[type = "email"]:focus,
+.filter-box input[type = "number"]:focus {
+  border-color: #2ecc71;
 }
 
 .filter-box p {
@@ -415,6 +432,7 @@ body {
   letter-spacing: .15em;
   border-radius: 0;
   font-family: 'Roboto', sans-serif;
+
   &:focus, &:active {
     outline: 0;
     border-bottom-color: black;
@@ -429,6 +447,7 @@ body {
 .user-info {
   font-size: 24px;
   font-family: 'Roboto', sans-serif;
+
   a {
     text-decoration: none;
     outline: none;
@@ -441,6 +460,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 40px 0 10px 0;
+
   &-text {
     font-size: 24px;
     font-family: 'Roboto', sans-serif;
@@ -453,4 +473,7 @@ body {
 }
 
 
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

@@ -432,4 +432,9 @@ body hr {
   height: auto;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 /*# sourceMappingURL=style.css.map */

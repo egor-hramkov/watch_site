@@ -9,27 +9,28 @@
     {% else %}
 
 
-        <div class="order-container">
+        <div class="order-container d-flex flex-column">
             {% for order in orders %}
-                <div class="order-card">
+                <div class="order-card d-flex justify-content-around align-items-center" style="box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3); width: 60%; margin: 15px auto; border-radius: 25px;">
 
-
-                    <div class="watch-card-img"><img class="watch-img" src="{{ order.order.watch_img.url }}"/></div>
-                        <div class="watch-card-text">
-                            <p class="article">{{ order.order.article }}</p>
-                            <a href="{{ order.order.get_absolute_url }}">
-                                <p class="watch-brand">{{ order.order.manufacturer.name }} {{ watch.name }}</p>
+                    <div class="watch-card-img"><img class="watch-img" style="width: 250px; height: auto;" src="{{ order.order.watch_img.url }}"/></div>
+                        <div class="watch-card-text" style="font-size: 20px; font-family: 'Roboto', sans-serif;">
+                            <p>Заказ №{{ order.pk }}</p>
+                            <a href="{{ order.order.get_absolute_url }}" class="text-decoration-none">
+                                <p class="watch-brand">{{ order.order.manufacturer.name }} {{ order.order.name }}</p>
                             </a>
-                            <p class="watch-price">{{ order.order.price|cut_price }}₽</p>
+                            <div>
+                                <p>Адрес: {{ order.address }}</p>
+                                <p>Телефон: {{ order.phone }}</p>
+                                <p>Статус: <span style="color: orange;">{{ order.status }}</span></p>
+                            </div>
+                            <div>
+                                <p>Дата создания: {{ order.order_time|date:'d M Y H:i' }}</p>
+                                <p>Примерная дата доставки: {{ order.ready_time|date:'d M Y' }}</p>
+                                <p>Сумма заказа: {{ order.order.price|cut_price }}₽</p>
+                            </div>
                         </div>
                     </div>
-
-                <p>{{ order.order.address }}</p>
-                <p>{{ order.order.phone }}</p>
-                <p>{{ order.order.status }}</p>
-                <p>{{ order.order.order_time }}</p>
-                <p>{{ order.order.ready_time }}</p>
-                <p>{{ order.order.price|cut_price }}₽</p>
 
             {% endfor %}
         </div>
