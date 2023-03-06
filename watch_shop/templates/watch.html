@@ -19,6 +19,13 @@
             </div>
         </div>
     </div>
-    <div style="display: flex;margin: 0 auto;"><button class="shopnow2" onclick="location.href = '{% url 'add_to_basket' %}?product_id={{ watch.id }}'">Приобрести</button></div>
+
+    {% if is_in_basket %}
+        <div style="font-size: 32px; font-family: 'Roboto', sans-serif;" class="d-flex justify-content-center">
+            <a href="{% url 'basket' %}" class="text-decoration-none text-dark">Товар уже в корзине!</a>
+        </div>
+    {% else %}
+        <div style="display: flex;margin: 0 auto;"><button class="shopnow2" onclick="location.href = '{% url 'add_to_basket' %}?product_id={{ watch.id }}'">Приобрести</button></div>
+    {% endif %}
 
 {% endblock %}

@@ -62,10 +62,11 @@ def get_watch(request, pk):
         watch = Watch.objects.get(id=pk)
     except Watch.DoesNotExist:
         raise Http404()
-
+    is_in_basket = True if Basket.objects.filter(user=request.user.id, product=watch) else False
     data = {
         "title": watch.manufacturer.name + ' ' + watch.name,
         "watch": watch,
+        "is_in_basket": is_in_basket,
     }
     return render(request, 'watch.html', context=data)
 

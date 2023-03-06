@@ -51,6 +51,9 @@ class Basket(models.Model):
     product = models.ForeignKey("Watch", verbose_name="Товар в корзине", on_delete=models.CASCADE)
     amount = models.IntegerField(verbose_name="Количество")
 
+    def __str__(self):
+        return f"Корзина пользователя {self.user.username} Номер объекта: {self.pk}"
+
 
 class Orders(models.Model):
     """Заказы"""

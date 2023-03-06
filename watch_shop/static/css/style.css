@@ -139,7 +139,7 @@ body hr {
 
 .shopnow2 {
   border: black solid 2px;
-  width: 450px;
+  width: fit-content;
   background-color: transparent;
   font-size: 26px;
   font-family: "Montserrat", sans-serif;
@@ -161,7 +161,7 @@ body hr {
   display: flex;
   border: 1px solid darkgrey;
   width: 25%;
-  height: auto;
+  height: fit-content;
   flex-direction: column;
   padding: 10px;
 }
@@ -413,6 +413,23 @@ body hr {
 .user-info a {
   text-decoration: none;
   outline: none;
+}
+
+.basket-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0 10px 0;
+}
+.basket-card-text {
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+}
+
+.basket-img {
+  width: 180px;
+  height: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
