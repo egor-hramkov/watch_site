@@ -5,7 +5,11 @@
 {% block content %}
 
     {% if not basket %}
-        <p>Ваша корзина пуста</p>
+        <div style="display: flex;flex-direction: column;align-items: center;margin: 15% auto;top: 50%;font-size: 36px;font-family: 'Roboto', sans-serif;">
+            <p>Ваша корзина пуста</p>
+            <a style="text-decoration: none; font-size: 30px;" href="{% url 'watches' %}">Вернуться к каталогу</a>
+        </div>
+        <div></div>
     {% else %}
 
         <div class="basket-container d-flex" style="flex-direction: column; align-items: center; width: 70%; margin: 0 auto;">
@@ -13,14 +17,15 @@
                 <div class="basket-card">
                     <a href="{{ b.product.get_absolute_url }}" class="d-flex justify-content-center align-items-center text-decoration-none text-dark">
                         <div class="watch-card-img"><img class="basket-img" src="{{ b.product.watch_img.url }}"/></div>
-                        <div class="basket-card-text">
-                            <p class="article">{{ b.product.article }}</p>
-                            <p class="watch-brand">{{ b.product.manufacturer.name }} {{ b.product.name }}</p>
+                        <div class="basket-card-text ">
+                            <p class="watch-brand text-primary">{{ b.product.manufacturer.name }} {{ b.product.name }}</p>
                             <p class="watch-price">{{ b.product.price|cut_price }}₽</p>
                         </div>
                     </a>
                 <button style="margin-left: 100px; margin-right: 0;" class="shopnow2" onclick="location.href ='{% url 'order_register' %}?product_id={{ b.product.id }}'">Оформить заказ на этот товар</button>
+                <button style="margin-left: 100px; margin-right: 0;" class="shopnow2" onclick="location.href ='{% url 'delete_from_basket' %}?product_id={{ b.product.id }}'">Удалить товар из корзины</button>
                 </div>
+                <hr style="width: 100%; background-color: black; margin-top: 10px;">
             {% endfor %}
         </div>
         <div style="flex-direction: column; display: flex; margin-top: 40px; align-items: center;">

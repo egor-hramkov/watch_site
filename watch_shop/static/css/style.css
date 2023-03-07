@@ -141,9 +141,8 @@ body hr {
   border: black solid 2px;
   width: fit-content;
   background-color: transparent;
-  font-size: 26px;
+  font-size: 24px;
   font-family: "Montserrat", sans-serif;
-  height: 45px;
   cursor: pointer;
   margin: 0 auto;
 }
@@ -241,7 +240,7 @@ body hr {
   justify-content: center;
   align-items: center;
   width: 70%;
-  height: 80%;
+  height: 90%;
   background-color: rgb(246, 244, 244);
   align-self: center;
   margin: 2% auto;

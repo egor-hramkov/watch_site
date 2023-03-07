@@ -145,7 +145,7 @@ def add_to_basket(request):
 
 @login_required()
 def delete_from_basket(request):
-    product_id = request.query_params.get('product_id')
+    product_id = request.GET.get('product_id')
     Basket.objects.filter(user=request.user.id, product=Watch.objects.get(id=product_id)).delete()
     return redirect('basket')
 
@@ -198,7 +198,7 @@ def order_register(request):
     if request.GET.get('all'):
         objects = Basket.objects.filter(user=request.user)
     else:
-        objects = Basket.objects.filter(product=request.GET.get('product_id'))
+        objects = Basket.objects.filter(user=request.user, product=request.GET.get('product_id'))
 
     total_price = 0
     for obj in objects:
