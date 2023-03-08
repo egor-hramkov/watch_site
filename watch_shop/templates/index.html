@@ -27,7 +27,11 @@
         <ul>
             <li class="search-input">
                 <img class="search-img" src="{% static "img/search.svg" %}"/>
-                <input class="search-input-text" placeholder="Поиск">
+                <!--<form method="post" onsubmit="window.location = {% url 'watches' %}"> --->
+                <form method="post" action="{% url 'watches' %}">
+                    {% csrf_token %}
+                    <input class="search-input-text" name="search" placeholder="Поиск">
+                </form>
             </li>
             <div style="display: flex;">
                 <li><a href="{% url 'watches' %}">Часы</a></li>

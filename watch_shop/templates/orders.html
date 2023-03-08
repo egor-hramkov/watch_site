@@ -5,7 +5,11 @@
 {% block content %}
 
     {% if not orders %}
-        <p>Вы еще не сделали ни одного заказа</p>
+
+        <div style="display: flex;flex-direction: column;align-items: center;margin: 15% auto;top: 50%;font-size: 36px;font-family: 'Roboto', sans-serif;">
+            <p>Вы еще не сделали ни одного заказа</p>
+            <a style="text-decoration: none; font-size: 30px;" href="{% url 'watches' %}">Вернуться к каталогу</a>
+        </div>
     {% else %}
 
 

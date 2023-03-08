@@ -91,43 +91,45 @@ body hr {
   padding-right: 5px;
 }
 
-.container {
+.container2 {
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
+  width: 95%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.container .beige-rect {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 65%;
+.container2 .beige-rect {
+  position: absolute;
+  top: 18%;
+  left: 15%;
+  width: 70%;
   height: 80%;
   background-color: rgb(246, 244, 244);
   z-index: 0;
   align-self: center;
+  border-radius: 20px;
 }
-.container .left-text {
+.container2 .left-text {
   font-size: 54px;
   font-family: "Roboto", sans-serif;
   z-index: 2;
-  position: absolute;
-  left: 110px;
 }
-.container .left-small-text {
+.container2 .left-small-text {
   font-size: 30px;
   color: grey;
   margin: 5px 0 5px 0;
 }
-.container .right-text {
+.container2 .right-text {
   z-index: 2;
-  position: absolute;
-  right: 170px;
   font-size: 54px;
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
+  margin-right: 3%;
 }
-.container .right-text .mainpage-shopnow {
+.container2 .right-text .mainpage-shopnow {
   border: black solid 2px;
   width: 100%;
   background-color: transparent;
@@ -172,13 +174,10 @@ body hr {
   text-decoration: underline;
 }
 .watches-container .watch-card-img {
-  height: auto;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
-}
-.watches-container .watch-card-img .watch-img {
-  height: auto;
-  width: 100%;
 }
 .watches-container .watch-card .watch-card-text .article {
   color: grey;

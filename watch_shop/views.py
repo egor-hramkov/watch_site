@@ -23,24 +23,29 @@ def watches_list(request):
     filter_form = FilterForm
 
     if request.method == 'POST':
-        filter_form = FilterForm(request.POST)
-        if filter_form.is_valid():
-            price_start = filter_form.cleaned_data.get('price_start') if filter_form.cleaned_data.get('price_start') else 0
-            price_end = filter_form.cleaned_data.get('price_end') if filter_form.cleaned_data.get('price_end') else 99999999
-            watches = watches.filter(price__gte=price_start, price__lte=price_end)
+        if request.POST.get('search'):
+            watches_by_name = watches.filter(name__icontains=request.POST.get('search'))
+            watches_by_manufacturer = watches.filter(manufacturer__name__icontains=request.POST.get('search'))
+            watches = watches_by_name | watches_by_manufacturer
+        else:
+            filter_form = FilterForm(request.POST)
+            if filter_form.is_valid():
+                price_start = filter_form.cleaned_data.get('price_start') if filter_form.cleaned_data.get('price_start') else 0
+                price_end = filter_form.cleaned_data.get('price_end') if filter_form.cleaned_data.get('price_end') else 99999999
+                watches = watches.filter(price__gte=price_start, price__lte=price_end)
 
-            if request.POST.get('is_water_resist'):
-                watches = watches.filter(is_water_resist=True)
+                if request.POST.get('is_water_resist'):
+                    watches = watches.filter(is_water_resist=True)
 
-            if filter_form.cleaned_data.get('manufacturer') != "0":
-                watches = watches.filter(manufacturer=filter_form.cleaned_data.get('manufacturer'))
+                if filter_form.cleaned_data.get('manufacturer') != "0":
+                    watches = watches.filter(manufacturer=filter_form.cleaned_data.get('manufacturer'))
 
-            if filter_form.cleaned_data.get('belt_type') != "0":
-                watches = watches.filter(manufacturer=filter_form.cleaned_data.get('belt_type'))
+                if filter_form.cleaned_data.get('belt_type') != "0":
+                    watches = watches.filter(manufacturer=filter_form.cleaned_data.get('belt_type'))
 
-            if filter_form.cleaned_data.get('gender') != "0":
-                genders = ['Мужские', 'Женские', 'Унисекс']
-                watches = watches.filter(gender=genders[int(filter_form.cleaned_data.get('gender'))-1])
+                if filter_form.cleaned_data.get('gender') != "0":
+                    genders = ['Мужские', 'Женские', 'Унисекс']
+                    watches = watches.filter(gender=genders[int(filter_form.cleaned_data.get('gender'))-1])
 
     paginator = Paginator(watches, 8)
     page_number = request.GET.get('page')
@@ -188,10 +193,7 @@ def order_register(request):
             else:
                 all_products = Basket.objects.filter(user=request.user.id)
                 for product in all_products:
-                    fields = form.save(commit=False)
-                    fields.user = User.objects.get(id=request.user.id)
-                    fields.order = Watch.objects.get(id=product)
-                    fields.save()
+                    Orders.objects.create(**form.cleaned_data, user=request.user, order=product.product, price=product.product.price)
 
         return redirect('orders')
 

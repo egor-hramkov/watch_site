@@ -106,29 +106,32 @@ body {
   }
 }
 
-.container {
+.container2 {
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
+  width: 95%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 
   .beige-rect {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    width: 65%;
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    width: 70%;
     height: 80%;
     background-color: rgb(246, 244, 244);
     z-index: 0;
     align-self: center;
+    border-radius: 20px;
   }
 
   .left-text {
     font-size: 54px;
     font-family: 'Roboto', sans-serif;
     z-index: 2;
-    position: absolute;
-    left: 110px;
   }
 
   .left-small-text {
@@ -139,11 +142,10 @@ body {
 
   .right-text {
     z-index: 2;
-    position: absolute;
-    right: 170px;
     font-size: 54px;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
+    margin-right: 3%;
 
     .mainpage-shopnow {
       border: black solid 2px;
@@ -194,14 +196,10 @@ body {
     }
 
     &-img {
-      height: auto;
-      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 20px;
-
-      .watch-img {
-        height: auto;
-        width: 100%;
-      }
     }
 
     .watch-card-text {
