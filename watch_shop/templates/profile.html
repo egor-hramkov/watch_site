@@ -3,10 +3,11 @@
 
 {% block content %}
     <div class="user-info">
-        <p>{{ user.email }}</p>
-        <p>{{ user.username }}</p>
-        <a href="{% url 'basket' %}">Моя корзина</a>
-        <a href="{% url 'orders' %}">Мои заказы</a>
-        <a href="{% url 'logout' %}">Выйти</a>
+        <p>Добро пожаловать, {{ user.email }} {{ user.username }}</p>
+        <div>
+            <a href="{% url 'basket' %}">Моя корзина</a>
+            <a href="{% url 'orders' %}">Мои заказы</a>
+            <a href="{% url 'logout' %}">Выйти</a>
+        </div>
     </div>
 {% endblock %}

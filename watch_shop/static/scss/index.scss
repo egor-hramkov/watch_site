@@ -263,7 +263,7 @@ body {
   }
 
   &-img {
-    height: 420px;
+    height: 390px;
     width: auto;
   }
 }
@@ -473,4 +473,37 @@ body {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+.forPaginate{
+  list-style: none; /*убираем маркеры списка*/
+  margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
+  padding-left: 0; /*убираем левый отступ, равный 40px*/
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+
+}
+
+.paginate {
+    display: inline;
+}
+
+.forPaginate li {
+    margin-left: 20px;
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+.user-info {
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
 }
