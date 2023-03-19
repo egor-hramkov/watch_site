@@ -4,10 +4,10 @@
 {% block content %}
     <div class="user-info">
         <p>Добро пожаловать, {{ user.username }}</p>
-        <div>
-            <a href="{% url 'basket' %}">Моя корзина</a>
-            <a href="{% url 'orders' %}">Мои заказы</a>
-            <a href="{% url 'logout' %}">Выйти</a>
+        <div class="d-flex justify-content-evenly w-100">
+            <a href="{% url 'basket' %}"><div class="profile-action">Моя корзина</div></a>
+            <a href="{% url 'orders' %}"> <div class="profile-action">Мои заказы</div></a>
+            <a href="{% url 'logout' %}"><div class="profile-action">Выйти</div></a>
         </div>
     </div>
 {% endblock %}
