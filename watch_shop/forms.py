@@ -35,8 +35,8 @@ class RegisterUserForm(UserCreationForm):
         return password
 
     def clean_password2(self):
-        password1 = self.cleaned_data['password1']
-        password2 = self.cleaned_data['password2']
+        password1 = self.data.get('password1')
+        password2 = self.data.get('password2')
         if password1 != password2:
             raise ValidationError('Пароли не совпадают')
         return password2
