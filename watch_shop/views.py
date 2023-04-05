@@ -41,7 +41,7 @@ def watches_list(request):
                     watches = watches.filter(manufacturer=filter_form.cleaned_data.get('manufacturer'))
 
                 if filter_form.cleaned_data.get('belt_type') != "0":
-                    watches = watches.filter(manufacturer=filter_form.cleaned_data.get('belt_type'))
+                    watches = watches.filter(belt_type=filter_form.cleaned_data.get('belt_type'))
 
                 if filter_form.cleaned_data.get('gender') != "0":
                     genders = ['Мужские', 'Женские', 'Унисекс']
