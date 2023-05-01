@@ -30,8 +30,10 @@ def watches_list(request):
         else:
             filter_form = FilterForm(request.POST)
             if filter_form.is_valid():
-                price_start = filter_form.cleaned_data.get('price_start') if filter_form.cleaned_data.get('price_start') else 0
-                price_end = filter_form.cleaned_data.get('price_end') if filter_form.cleaned_data.get('price_end') else 99999999
+                price_start = filter_form.cleaned_data.get('price_start') if filter_form.cleaned_data.get(
+                    'price_start') else 0
+                price_end = filter_form.cleaned_data.get('price_end') if filter_form.cleaned_data.get(
+                    'price_end') else 99999999
                 watches = watches.filter(price__gte=price_start, price__lte=price_end)
 
                 if request.POST.get('is_water_resist'):
@@ -45,7 +47,7 @@ def watches_list(request):
 
                 if filter_form.cleaned_data.get('gender') != "0":
                     genders = ['Мужские', 'Женские', 'Унисекс']
-                    watches = watches.filter(gender=genders[int(filter_form.cleaned_data.get('gender'))-1])
+                    watches = watches.filter(gender=genders[int(filter_form.cleaned_data.get('gender')) - 1])
 
     paginator = Paginator(watches, 8)
     page_number = request.GET.get('page')
@@ -193,7 +195,8 @@ def order_register(request):
             else:
                 all_products = Basket.objects.filter(user=request.user.id)
                 for product in all_products:
-                    Orders.objects.create(**form.cleaned_data, user=request.user, order=product.product, price=product.product.price)
+                    Orders.objects.create(**form.cleaned_data, user=request.user, order=product.product,
+                                          price=product.product.price)
 
         return redirect('orders')
 
@@ -220,3 +223,10 @@ def pageNotFound(request, exception):
         'title': 'Страница не найдена',
     }
     return HttpResponseNotFound(render(request, '404.html', context=context))
+
+
+def feedback(request):
+    context = {
+        'title': 'Обратная связь',
+    }
+    return render(request, 'feedback.html', context=context)

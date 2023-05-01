@@ -1,7 +1,7 @@
 from django.urls import path
 
 from watch_shop.views import mainpage, watches_list, get_watch, register, auth, profile, \
-    basket, add_to_basket, delete_from_basket, order_register, orders, logout_user
+    basket, add_to_basket, delete_from_basket, order_register, orders, logout_user, feedback
 
 urlpatterns = [
     path('', mainpage, name='mainpage'),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('orders/', orders, name='orders'),
     #path('orders/<int:pk>', get_order, name='get_order'),
     path('order_register/', order_register, name='order_register'),
+    path('feedback/', feedback, name='feedback'),
 ]
